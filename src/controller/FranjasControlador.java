@@ -39,7 +39,7 @@ public class FranjasControlador {
                 objVista.mostrarMensaje("El precio por kW/H es: " + objFranja.getPrecio() + " COP");
                 objVista.mostrarMensaje("El total de su recibo es: " + objTotal + " COP");
             } else {
-                objVista.mostrarMensaje("La  no está dentro de las franjas definidas."); // Mensaje si no hay franja
+                objVista.mostrarMensaje("La hora no está dentro de las franjas definidas."); // Mensaje si no hay franja
             }
         }
     }
