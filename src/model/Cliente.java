@@ -12,7 +12,7 @@ public class Cliente {
 
     
     public Cliente(String nombre, String numeroIdentificacion, String tipoDeIdentificacion, String correo,
-            String direccion, int capacidadMaximaClientes) {
+            String direccion) {
         this.nombre = nombre;
         this.numeroIdentificacion = numeroIdentificacion;
         this.tipoDeIdentificacion = tipoDeIdentificacion;
@@ -102,10 +102,6 @@ public class Cliente {
         }
         return false;
     }
-    public Cliente[] obtenerTodosClientes() {
-        Cliente[] clientesActuales = new Cliente[cantidadClientes];
-        System.arraycopy(matrizClientes, 0, clientesActuales, 0, cantidadClientes);
-        return clientesActuales;
-    }
+    
     //Metodos similares para Registrador, consumo, etc. (con sus respectivas matrices)
 }

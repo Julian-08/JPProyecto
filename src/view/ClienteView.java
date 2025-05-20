@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 public class ClienteView {
     private Scanner teclado = new Scanner(System.in);
+    
+    
+    public void mMostrarMensaje(String mensaje) {
+        System.out.println(mensaje);
+    }
 
     public Cliente mPedirDatos()
     {
@@ -54,4 +59,5 @@ public class ClienteView {
 
         return objCliente;
     }
+
 }
