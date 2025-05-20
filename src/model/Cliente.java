@@ -12,7 +12,7 @@ public class Cliente {
 
     
     public Cliente(String nombre, String numeroIdentificacion, String tipoDeIdentificacion, String correo,
-            String direccion, int capacidadMaximaClientes, int i, int j) {
+            String direccion, int capacidadMaximaClientes) {
         this.nombre = nombre;
         this.numeroIdentificacion = numeroIdentificacion;
         this.tipoDeIdentificacion = tipoDeIdentificacion;
@@ -62,7 +62,6 @@ public class Cliente {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
 
     public String getDireccion() {
         return direccion;
