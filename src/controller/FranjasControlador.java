@@ -6,17 +6,33 @@ import java.util.List;
 import model.Franja; // Importación de model.Franja
 import view.FranjaVista; // Importación de view.FranjaVista
 
+/**
+ * Controlador que gestiona la lógica relacionada con las franjas horarias y el cálculo del total a pagar.
+ * Interactúa con la vista para solicitar datos y mostrar resultados al usuario.
+ * 
+ * @author Cesar Cardozo
+ * @author Julian Barreto
+ * @author Santiago Cabezas
+ */
 public class FranjasControlador {
-    private List<Franja> objListaFranjas; // Lista de franjas horarias
-    private FranjaVista objVista; // Vista para interactuar con el usuario
+    /** Lista de franjas horarias */
+    private List<Franja> objListaFranjas;
+    /** Vista para interactuar con el usuario */
+    private FranjaVista objVista;
 
-    // Constructor que inicializa la vista y las franjas horarias
+    /**
+     * Constructor que inicializa la vista y las franjas horarias.
+     * 
+     * @param vista Vista para la interacción con el usuario
+     */
     public FranjasControlador(FranjaVista vista) {
         this.objVista = vista;
         this.mInicializarFranjas(); 
     }
 
-    // Método para inicializar las franjas horarias
+    /**
+     * Inicializa las franjas horarias con sus respectivos precios.
+     */
     private void mInicializarFranjas() {
         this.objListaFranjas = new ArrayList<>();
         this.objListaFranjas.add(new Franja(0, 6, 200));  // Franja de 0:00 a 6:00 con precio 200 COP
@@ -24,7 +40,10 @@ public class FranjasControlador {
         this.objListaFranjas.add(new Franja(18, 23, 500)); // Franja de 18:00 a 23:00 con precio 500 COP
     }
 
-    // Método principal para ejecutar la lógica del controlador
+    /**
+     * Método principal para ejecutar la lógica del controlador.
+     * Solicita el consumo y la hora al usuario, calcula la franja y muestra el total a pagar.
+     */
     public void mEjecutarAplicacion() {
         int objConsumo = objVista.solicitarConsumo(); // Solicitar el consumo al usuario
         String objHoraInput = objVista.solicitarHora(); // Solicitar la hora al usuario
@@ -44,7 +63,12 @@ public class FranjasControlador {
         }
     }
 
-    // Método para convertir una hora en formato "HH:mm" a un valor decimal
+    /**
+     * Convierte una hora en formato "HH:mm" a un valor decimal.
+     * 
+     * @param objHoraInput Hora en formato "HH:mm"
+     * @return Hora en formato decimal, o -1.0 si la hora no es válida
+     */
     private double mConvertirHora(String objHoraInput) {
         try {
             String[] objPartes = objHoraInput.split(":"); // Dividir la hora en horas y minutos
@@ -59,7 +83,12 @@ public class FranjasControlador {
         }
     }
 
-    // Método para calcular la franja horaria correspondiente a una hora dada
+    /**
+     * Calcula la franja horaria correspondiente a una hora dada.
+     * 
+     * @param objHora Hora en formato decimal
+     * @return La franja correspondiente o null si no se encuentra ninguna
+     */
     private Franja mCalcularFranja(double objHora) {
         Iterator<Franja> objIterator = this.objListaFranjas.iterator();
 
