@@ -25,23 +25,43 @@ public class FranjaVista {
    }
 
    /**
-    * Solicita al usuario el consumo en kW/H y lo retorna como un entero.
+    * Solicita al usuario el consumo por hora en kW/H y lo retorna como un entero.
     * 
     * @return Consumo ingresado por el usuario en kW/H
     */
-   public int solicitarConsumo() {
-      System.out.print("Ingrese el consumo en kW/H: ");
+   public int mSolicitarConsumo() {
+      System.out.print("Ingrese el consumo por hora en kW/H: ");
       return this.scanner.nextInt();
    }
 
    /**
-    * Solicita al usuario la hora actual en formato HH:mm y la retorna como una cadena.
+    * Solicita al usuario el mes (1-12) y lo retorna como un entero.
     * 
-    * @return Hora ingresada por el usuario en formato HH:mm
+    * @return Mes ingresado por el usuario (1-12)
     */
-   public String solicitarHora() {
-      this.scanner.nextLine(); // Limpia el buffer del Scanner para evitar problemas con la entrada
-      System.out.print("Ingrese la hora actual (formato HH:mm, por ejemplo, 3:00 o 14:30): ");
+   public int mSolicitarMes() {
+      System.out.print("Ingrese el mes (1-12): ");
+      return this.scanner.nextInt();
+   }
+
+   /**
+    * Solicita al usuario el año y lo retorna como un entero.
+    * 
+    * @return Año ingresado por el usuario
+    */
+   public int mSolicitarAnio() {
+      System.out.print("Ingrese el año (por ejemplo, 2025): ");
+      return this.scanner.nextInt();
+   }
+
+   /**
+    * Solicita al usuario la hora en formato HH:mm y la retorna como una cadena.
+    * 
+    * @return Hora ingresada por el usuario (formato HH:mm)
+    */
+   public String mSolicitarHora() {
+      System.out.print("Ingrese la hora (formato HH:mm): ");
+      this.scanner.nextLine(); // Limpiar buffer
       return this.scanner.nextLine();
    }
 
@@ -50,7 +70,7 @@ public class FranjaVista {
     * 
     * @param mensaje Mensaje a mostrar
     */
-   public void mostrarMensaje(String mensaje) {
+   public void mMostrarMensaje(String mensaje) {
       System.out.println(mensaje);
    }
 }

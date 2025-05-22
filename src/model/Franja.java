@@ -28,18 +28,30 @@ public class Franja {
       this.precio = precio;
    }
 
-   /** @return la hora de inicio de la franja */
-   public int getHoraInicio() {
+   /**
+    * Retorna la hora de inicio de la franja.
+    * 
+    * @return la hora de inicio de la franja
+    */
+   public int mGetHoraInicio() {
       return this.horaInicio;
    }
 
-   /** @return la hora de fin de la franja */
-   public int getHoraFin() {
+   /**
+    * Retorna la hora de fin de la franja.
+    * 
+    * @return la hora de fin de la franja
+    */
+   public int mGetHoraFin() {
       return this.horaFin;
    }
 
-   /** @return el precio de la franja */
-   public int getPrecio() {
+   /**
+    * Retorna el precio de la franja.
+    * 
+    * @return el precio de la franja
+    */
+   public int mGetPrecio() {
       return this.precio;
    }
 }

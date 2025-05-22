@@ -2,15 +2,15 @@ package controller;
 
 import model.Cliente;
 import view.ClienteView;
-import java.util.Scanner;
+
 
 public class ClienteControlador {
     private ClienteView objvista;
     private Cliente objmodelo;
 
     public void mNuevoCliente() {
-        Cliente objNuevoCliente = objvista.mSolicitarIdCliente();
-        if (objmodelo.crearCliente(objNuevoCliente)) {
+        String objNuevoCliente = objvista.mSolicitarIdCliente();
+        if (objmodelo.crearCliente(objNuevoCliente) != null) {
             objvista.mMostrarMensaje("Cliente creado con éxito");
 
         } else {
@@ -20,7 +20,7 @@ public class ClienteControlador {
    
     public void mEditarCliente() {
         String idCliente = objvista.mSolicitarIdCliente();
-        Cliente objClienteEditar = objmodelo.buscarCliente(idCliente);
+        Cliente objClienteEditar = objmodelo.crearCliente(idCliente);
         if (objClienteEditar != null) {
             Cliente objClienteEditado = objvista.mEditarCliente(objClienteEditar);
             if (objmodelo.actualizarCliente(objClienteEditado)) {
