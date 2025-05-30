@@ -14,17 +14,27 @@ import java.util.Scanner;
 public class ClienteView {
     /** Objeto para leer la entrada del usuario desde la consola */
     private Scanner teclado = new Scanner(System.in);
-    
-    
-    public void mMostrarMensaje(String mensaje) {
-        System.out.println(mensaje);
-    }
 
     /**
      * Constructor de la clase ClienteView.
      */
     public ClienteView() {
         // Constructor vacío
+    }
+
+    /**
+     * Muestra el menú de opciones para clientes y retorna la opción seleccionada.
+     * 
+     * @return Opción seleccionada por el usuario
+     */
+    public int mostrarMenuCliente() {
+        System.out.println("\n--- Menú Cliente ---");
+        System.out.println("1. Registrar nuevo cliente");
+        System.out.println("2. Editar cliente");
+        System.out.println("3. Salir");
+        System.out.print("Seleccione una opción: ");
+        int opcion = Integer.parseInt(teclado.nextLine());
+        return opcion;
     }
 
     /**
@@ -45,7 +55,8 @@ public class ClienteView {
         String correo = teclado.nextLine();
         System.out.println("Direccion del cliente:");
         String direccion = teclado.nextLine();
-        return new Cliente(nombre, numeroIdentificacion, tipoDeIdentificacion, correo, direccion, 0, 0, 0); 
+        // Capacidad máxima de clientes, puedes cambiar el 100 si lo deseas
+        return new Cliente(nombre, numeroIdentificacion, tipoDeIdentificacion, correo, direccion, 100); 
     }
 
     /**
@@ -71,8 +82,7 @@ public class ClienteView {
         System.out.println("\n =========================");
         System.out.println("Ingrese el nuevo nombre del cliente (Dejar en blanco para no cambiar):");
         String nombre = teclado.nextLine();
-        if (!nombre.isEmpty()) /*  Verifica si el nombre no está vacío por medio de .isEmpty() de ser verdadero 
-        cambiara el nombre, si esya vacio dejara el que ya se tenia*/{
+        if (!nombre.isEmpty()) {
             objCliente.setNombre(nombre);
         }
         System.out.println("Ingrese el nuevo correo del cliente (Dejar en blanco para no cambiar):");
@@ -88,4 +98,12 @@ public class ClienteView {
         return objCliente;
     }
 
+    /**
+     * Muestra un mensaje al usuario.
+     * 
+     * @param mensaje Mensaje a mostrar
+     */
+    public void mMostrarMensaje(String mensaje) {
+        System.out.println(mensaje);
+    }
 }

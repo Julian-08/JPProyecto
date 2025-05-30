@@ -3,7 +3,14 @@ package controller;
 import model.MedidorModelo;
 import view.MedidorVista;
 
-// Controlador: gestiona la lógica entre vista y modelo
+/**
+ * Controlador que gestiona la lógica entre la vista y el modelo de medidores.
+ * Permite agregar, mostrar y editar medidores.
+ * 
+ * @author Cesar Cardozo
+ * @author Julian Barreto
+ * @author Santiago Cabezas
+ */
 public class MedidorControlador {
     private MedidorModelo modelo;
     private MedidorVista vista;
@@ -26,8 +33,7 @@ public class MedidorControlador {
                     String direccion = vista.pedirDato("Ingrese dirección: ");
                     String ciudad = vista.pedirDato("Ingrese ciudad: ");
                     String idCliente = vista.pedirDato("Ingrese ID del cliente: ");
-                    String consumo = vista.pedirDato("Ingrese consumo inicial en kWh: ");
-                    boolean agregado = modelo.agregarMedidor(id, direccion, ciudad, idCliente, consumo);
+                    boolean agregado = modelo.agregarMedidor(id, direccion, ciudad, idCliente);
                     if (agregado) {
                         vista.mostrarMensaje("Medidor agregado exitosamente.\n");
                     } else {
@@ -51,40 +57,11 @@ public class MedidorControlador {
                         vista.mostrarMensaje("Medidor no encontrado.\n");
                     }
                     break;
-                
-
 
                 case "4":
-
-                    String clienteActualizar = vista.pedirDato("Ingrese ID del cliente: ");
-                    String nuevoConsumo = vista.pedirDato("Ingrese nuevo consumo en kWh: ");
-                    boolean actualizado = modelo.actualizarConsumoPorCliente(clienteActualizar, nuevoConsumo);
-                    if (actualizado) {
-                        vista.mostrarMensaje("Consumo actualizado correctamente.\n");
-                    } else {
-                        vista.mostrarMensaje("Cliente no encontrado.\n");
-                    }
-                    break;
-
-
-                case "5":
-                    String clienteBuscar = vista.pedirDato("Ingrese ID del cliente: ");
-                    String consumoEncontrado = modelo.obtenerConsumoPorCliente(clienteBuscar);
-                    if (consumoEncontrado != null) {
-                        vista.mostrarMensaje("Consumo registrado: " + consumoEncontrado + " kWh\n");
-                    } else {
-                        vista.mostrarMensaje("Cliente no encontrado.\n");
-                    }
-                    break;
-
-
-                case "6":
-
-
                     continuar = false;
                     vista.mostrarMensaje("Saliendo del sistema...");
                     break;
-
 
                 default:
                     vista.mostrarMensaje("Opción no válida.\n");

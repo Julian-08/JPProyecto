@@ -73,4 +73,9 @@ public class FranjaVista {
    public void mMostrarMensaje(String mensaje) {
       System.out.println(mensaje);
    }
+
+   public int mostrarMenuFranjas() {
+      // TODO Auto-generated method stub
+      throw new UnsupportedOperationException("Unimplemented method 'mostrarMenuFranjas'");
+   }
 }
