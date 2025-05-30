@@ -24,11 +24,21 @@ public class MedidorControlador {
         boolean continuar = true;
 
         while (continuar) {
-            vista.mostrarMenu();
-            String opcion = vista.pedirDato("Seleccione una opción: ");
+            // Menú con botones
+            String[] opciones = {"Agregar nuevo medidor", "Mostrar todos los medidores", "Editar medidor", "Salir"};
+            int opcion = javax.swing.JOptionPane.showOptionDialog(
+                null,
+                "=== MENÚ MEDIDOR DE LUZ ===",
+                "Menú Medidor",
+                javax.swing.JOptionPane.DEFAULT_OPTION,
+                javax.swing.JOptionPane.INFORMATION_MESSAGE,
+                null,
+                opciones,
+                opciones[0]
+            );
 
             switch (opcion) {
-                case "1":
+                case 0: // Agregar nuevo medidor
                     String id = vista.pedirDato("Ingrese ID del medidor: ");
                     String direccion = vista.pedirDato("Ingrese dirección: ");
                     String ciudad = vista.pedirDato("Ingrese ciudad: ");
@@ -41,11 +51,11 @@ public class MedidorControlador {
                     }
                     break;
 
-                case "2":
+                case 1: // Mostrar todos los medidores
                     vista.mostrarMedidores(modelo.obtenerTodosLosMedidores(), modelo.getCantidadMedidores());
                     break;
 
-                case "3":
+                case 2: // Editar medidor
                     String idEditar = vista.pedirDato("Ingrese el ID del medidor que desea editar: ");
                     String nuevaDireccion = vista.pedirDato("Nueva dirección: ");
                     String nuevaCiudad = vista.pedirDato("Nueva ciudad: ");
@@ -58,7 +68,8 @@ public class MedidorControlador {
                     }
                     break;
 
-                case "4":
+                case 3: // Salir
+                case -1: // Cerrar ventana
                     continuar = false;
                     vista.mostrarMensaje("Saliendo del sistema...");
                     break;

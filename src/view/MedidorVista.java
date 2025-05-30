@@ -1,9 +1,10 @@
 package view;
+import javax.swing.JOptionPane;
 import java.util.Scanner;
 
 /**
  * Clase que gestiona la interacción con el usuario para operaciones relacionadas con medidores.
- * Permite solicitar datos y mostrar mensajes por consola.
+ * Permite solicitar datos y mostrar mensajes por ventana.
  * 
  * @author Cesar Cardozo
  * @author Julian Barreto
@@ -20,11 +21,17 @@ public class MedidorVista {
      * Muestra el menú principal de medidores y las opciones disponibles.
      */
     public void mostrarMenu() {
-        System.out.println("=== MENÚ MEDIDOR DE LUZ ===");
-        System.out.println("1. Agregar nuevo medidor");
-        System.out.println("2. Mostrar todos los medidores");
-        System.out.println("3. Editar medidor");
-        System.out.println("4. Salir");
+        String[] opciones = {"Agregar nuevo medidor", "Mostrar todos los medidores", "Editar medidor", "Salir"};
+        JOptionPane.showOptionDialog(
+            null,
+            "=== MENÚ MEDIDOR DE LUZ ===",
+            "Menú Medidor",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.INFORMATION_MESSAGE,
+            null,
+            opciones,
+            opciones[0]
+        );
     }
 
     /**
@@ -33,8 +40,7 @@ public class MedidorVista {
      * @return Dato ingresado por el usuario
      */
     public String pedirDato(String mensaje) {
-        System.out.print(mensaje);
-        return scanner.nextLine();
+        return JOptionPane.showInputDialog(null, mensaje);
     }
 
     /**
@@ -42,7 +48,7 @@ public class MedidorVista {
      * @param mensaje Mensaje a mostrar
      */
     public void mostrarMensaje(String mensaje) {
-        System.out.println(mensaje);
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 
     /**
@@ -51,13 +57,14 @@ public class MedidorVista {
      * @param cantidad Cantidad de medidores registrados
      */
     public void mostrarMedidores(String[][] datos, int cantidad) {
-        System.out.println("\n--- LISTA DE MEDIDORES ---");
+        StringBuilder sb = new StringBuilder("--- LISTA DE MEDIDORES ---\n");
         for (int i = 0; i < cantidad; i++) {
-            System.out.println("ID: " + datos[i][0]
-                    + ", Dirección: " + datos[i][1]
-                    + ", Ciudad: " + datos[i][2]
-                    + ", Cliente: " + datos[i][3]);
+            sb.append("ID: ").append(datos[i][0])
+              .append(", Dirección: ").append(datos[i][1])
+              .append(", Ciudad: ").append(datos[i][2])
+              .append(", Cliente: ").append(datos[i][3])
+              .append("\n");
         }
-        System.out.println();
+        JOptionPane.showMessageDialog(null, sb.toString());
     }
 }

@@ -1,109 +1,54 @@
 package view;
 
 import model.Cliente;
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
-/**
- * Clase que gestiona la interacción con el usuario para operaciones relacionadas con clientes.
- * Permite solicitar datos, editar información y mostrar mensajes por consola.
- * 
- * @author Cesar Cardozo
- * @author Julian Barreto
- * @author Santiago Cabezas
- */
 public class ClienteView {
-    /** Objeto para leer la entrada del usuario desde la consola */
-    private Scanner teclado = new Scanner(System.in);
 
-    /**
-     * Constructor de la clase ClienteView.
-     */
-    public ClienteView() {
-        // Constructor vacío
-    }
+    public ClienteView() {}
 
-    /**
-     * Muestra el menú de opciones para clientes y retorna la opción seleccionada.
-     * 
-     * @return Opción seleccionada por el usuario
-     */
     public int mostrarMenuCliente() {
-        System.out.println("\n--- Menú Cliente ---");
-        System.out.println("1. Registrar nuevo cliente");
-        System.out.println("2. Editar cliente");
-        System.out.println("3. Salir");
-        System.out.print("Seleccione una opción: ");
-        int opcion = Integer.parseInt(teclado.nextLine());
-        return opcion;
+        String[] opciones = {"Registrar nuevo cliente", "Editar cliente", "Salir"};
+        int opcion = JOptionPane.showOptionDialog(
+            null,
+            "Seleccione una opción:",
+            "Menú Cliente",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.INFORMATION_MESSAGE,
+            null,
+            opciones,
+            opciones[0]
+        );
+        return opcion + 1; // Para que sea 1,2,3 como antes
     }
 
-    /**
-     * Solicita al usuario los datos para crear un nuevo cliente.
-     * 
-     * @return Un nuevo objeto Cliente con los datos ingresados
-     */
     public Cliente mPedirDatos() {
-        System.out.println("Creando un cliente nuevo");
-        System.out.println("\n =========================");
-        System.out.println("\n Nombre del cliente:");
-        String nombre = teclado.nextLine();
-        System.out.println("Numero de identificacion del cliente:");
-        String numeroIdentificacion = teclado.nextLine();
-        System.out.println("Tipo de identificacion:");
-        String tipoDeIdentificacion =  teclado.nextLine();
-        System.out.println("Ingrese el correo del cliente:");
-        String correo = teclado.nextLine();
-        System.out.println("Direccion del cliente:");
-        String direccion = teclado.nextLine();
-        // Capacidad máxima de clientes, puedes cambiar el 100 si lo deseas
+        String nombre = JOptionPane.showInputDialog(null, "Nombre del cliente:");
+        String numeroIdentificacion = JOptionPane.showInputDialog(null, "Numero de identificacion del cliente:");
+        String tipoDeIdentificacion = JOptionPane.showInputDialog(null, "Tipo de identificacion:");
+        String correo = JOptionPane.showInputDialog(null, "Ingrese el correo del cliente:");
+        String direccion = JOptionPane.showInputDialog(null, "Direccion del cliente:");
         return new Cliente(nombre, numeroIdentificacion, tipoDeIdentificacion, correo, direccion, 100); 
     }
 
-    /**
-     * Solicita al usuario el número de identificación de un cliente.
-     * 
-     * @return Número de identificación ingresado por el usuario
-     */
     public String mSolicitarIdCliente() {
-        System.out.println("Ingrese el numero de identificacion del cliente");
-        String numeroIdentificacion = teclado.nextLine();
-        return numeroIdentificacion;
+        return JOptionPane.showInputDialog(null, "Ingrese el numero de identificacion del cliente:");
     }
 
-    /**
-     * Permite editar los datos de un cliente existente.
-     * Solo se actualizan los campos que el usuario ingresa (no vacíos).
-     * 
-     * @param objCliente Cliente a editar
-     * @return El cliente con los datos actualizados
-     */
     public Cliente mEditarCliente (Cliente objCliente) {
-        System.out.println("Editando cliente con numero de identificacion: " + objCliente.getNumeroIdentificacion());
-        System.out.println("\n =========================");
-        System.out.println("Ingrese el nuevo nombre del cliente (Dejar en blanco para no cambiar):");
-        String nombre = teclado.nextLine();
-        if (!nombre.isEmpty()) {
-            objCliente.setNombre(nombre);
-        }
-        System.out.println("Ingrese el nuevo correo del cliente (Dejar en blanco para no cambiar):");
-        String correo = teclado.nextLine();
-        if (!correo.isEmpty()) {
-            objCliente.setCorreo(correo);
-        }
-        System.out.println("Ingrese la nueva direccion del cliente (Dejar en blanco para no cambiar):");
-        String direccion = teclado.nextLine();
-        if (!direccion.isEmpty()) {
-            objCliente.setDireccion(direccion);
-        }
+        String nombre = JOptionPane.showInputDialog(null, "Nuevo nombre del cliente (actual: " + objCliente.getNombre() + "):", objCliente.getNombre());
+        if (nombre != null && !nombre.isEmpty()) objCliente.setNombre(nombre);
+
+        String correo = JOptionPane.showInputDialog(null, "Nuevo correo del cliente (actual: " + objCliente.getCorreo() + "):", objCliente.getCorreo());
+        if (correo != null && !correo.isEmpty()) objCliente.setCorreo(correo);
+
+        String direccion = JOptionPane.showInputDialog(null, "Nueva direccion del cliente (actual: " + objCliente.getDireccion() + "):", objCliente.getDireccion());
+        if (direccion != null && !direccion.isEmpty()) objCliente.setDireccion(direccion);
+
         return objCliente;
     }
 
-    /**
-     * Muestra un mensaje al usuario.
-     * 
-     * @param mensaje Mensaje a mostrar
-     */
     public void mMostrarMensaje(String mensaje) {
-        System.out.println(mensaje);
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 }

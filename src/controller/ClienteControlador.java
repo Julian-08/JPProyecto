@@ -44,7 +44,7 @@ public class ClienteControlador {
         }
     }
 
-    // Menú de cliente en consola
+    // Menú de cliente en ventana
     public void mostrarMenuCliente() {
         boolean salir = false;
         while (!salir) {
@@ -60,7 +60,7 @@ public class ClienteControlador {
                     salir = true;
                     break;
                 default:
-                    System.out.println("Opción inválida.");
+                    objvista.mMostrarMensaje("Opción inválida.");
             }
         }
     }
