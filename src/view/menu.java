@@ -7,9 +7,7 @@ import model.MedidorModelo;
 import controller.ClienteControlador;
 import controller.MedidorControlador;
 import controller.FranjasControlador;
-import view.ClienteView;
-import view.MedidorVista;
-import view.FranjaVista;
+
 
 public class menu extends JFrame {
     private JButton btnCliente;
