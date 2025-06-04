@@ -113,38 +113,41 @@ public class menu extends JFrame {
 
     // Método para imprimir el recibo con los datos guardados y salir
     private void imprimirReciboYSalir() {
-        System.out.println("\n===== FACTURA DE SERVICIO =====");
+        StringBuilder sb = new StringBuilder();
+        sb.append("===== FACTURA DE SERVICIO =====\n");
         if (ultimoCliente != null) {
-            System.out.println("Cliente:");
-            System.out.println("  Nombre: " + ultimoCliente.getNombre());
-            System.out.println("  ID: " + ultimoCliente.getNumeroIdentificacion());
-            System.out.println("  Tipo ID: " + ultimoCliente.getTipoDeIdentificacion());
-            System.out.println("  Correo: " + ultimoCliente.getCorreo());
-            System.out.println("  Dirección: " + ultimoCliente.getDireccion());
+            sb.append("Cliente:\n");
+            sb.append("  Nombre: ").append(ultimoCliente.getNombre()).append("\n");
+            sb.append("  ID: ").append(ultimoCliente.getNumeroIdentificacion()).append("\n");
+            sb.append("  Tipo ID: ").append(ultimoCliente.getTipoDeIdentificacion()).append("\n");
+            sb.append("  Correo: ").append(ultimoCliente.getCorreo()).append("\n");
+            sb.append("  Dirección: ").append(ultimoCliente.getDireccion()).append("\n");
         } else {
-            System.out.println("No hay datos de cliente.");
+            sb.append("No hay datos de cliente.\n");
         }
 
         if (ultimoMedidor != null) {
-            System.out.println("\nMedidor:");
-            System.out.println("  ID: " + ultimoMedidor[0]);
-            System.out.println("  Dirección: " + ultimoMedidor[1]);
-            System.out.println("  Ciudad: " + ultimoMedidor[2]);
-            System.out.println("  ID Cliente: " + ultimoMedidor[3]);
+            sb.append("\nMedidor:\n");
+            sb.append("  ID: ").append(ultimoMedidor[0]).append("\n");
+            sb.append("  Dirección: ").append(ultimoMedidor[1]).append("\n");
+            sb.append("  Ciudad: ").append(ultimoMedidor[2]).append("\n");
+            sb.append("  ID Cliente: ").append(ultimoMedidor[3]).append("\n");
         } else {
-            System.out.println("\nNo hay datos de medidor.");
+            sb.append("\nNo hay datos de medidor.\n");
         }
 
-        System.out.println("\nConsumo:");
+        sb.append("\nConsumo:\n");
         if (ultimoConsumo > 0) {
-            System.out.println("  Consumo promedio por hora: " + ultimoConsumo + " kW/H");
-            System.out.println("  Mes: " + ultimoMes);
-            System.out.println("  Año: " + ultimoAnio);
-            System.out.println("  Total factura: " + ultimoTotalFactura + " COP");
+            sb.append("  Consumo promedio por hora: ").append(ultimoConsumo).append(" kW/H\n");
+            sb.append("  Mes: ").append(ultimoMes).append("\n");
+            sb.append("  Año: ").append(ultimoAnio).append("\n");
+            sb.append("  Total factura: ").append(ultimoTotalFactura).append(" COP\n");
         } else {
-            System.out.println("No hay datos de consumo.");
+            sb.append("No hay datos de consumo.\n");
         }
-        System.out.println("==============================\n");
+        sb.append("==============================");
+
+        JOptionPane.showMessageDialog(this, sb.toString(), "Factura de Servicio", JOptionPane.INFORMATION_MESSAGE);
 
         // Cierra el programa después de imprimir la factura
         System.exit(0);

@@ -5,6 +5,13 @@ import java.util.List;
 import model.Franja;
 import view.FranjaVista;
 
+/**
+ * Controlador que gestiona las operaciones relacionadas con franjas horarias.
+ * Permite calcular consumos y mostrar menús de franjas.
+ * @author Cesar Cardozo
+ * @author Julian Barreto
+ * @author Santiago Cabezas
+ */
 public class FranjasControlador {
     /** Lista de franjas horarias */
     private List<Franja> objListaFranjas;
@@ -43,6 +50,9 @@ public class FranjasControlador {
         }
     }
 
+    /**
+     * Ejecuta la aplicación para calcular el consumo y mostrar resultados en ventana.
+     */
     public void mEjecutarAplicacion() {
         int consumoPromedio = objVista.mSolicitarConsumo();
         int mes = objVista.mSolicitarMes();
@@ -78,6 +88,11 @@ public class FranjasControlador {
         }
     }
 
+    /**
+     * Genera un arreglo con los consumos horarios simulados para un día.
+     * @param promedio Consumo promedio por hora
+     * @return Arreglo de consumos por hora
+     */
     private int[] mGenerarConsumosHorarios(int promedio) {
         int[] consumos = new int[24];
         java.util.Random rand = new java.util.Random();
@@ -97,6 +112,11 @@ public class FranjasControlador {
         return consumos;
     }
 
+    /**
+     * Calcula la franja correspondiente a una hora dada.
+     * @param hora Hora a consultar
+     * @return Franja correspondiente o null si no existe
+     */
     private Franja mCalcularFranja(int hora) {
         for (Franja franja : this.objListaFranjas) {
             if (hora >= franja.mGetHoraInicio() && hora <= franja.mGetHoraFin()) {
@@ -106,6 +126,12 @@ public class FranjasControlador {
         return null;
     }
 
+    /**
+     * Devuelve la cantidad de días de un mes dado.
+     * @param mes Mes (1-12)
+     * @param anio Año
+     * @return Días del mes
+     */
     private int mObtenerDiasDelMes(int mes, int anio) {
         switch (mes) {
             case 2:
@@ -121,6 +147,14 @@ public class FranjasControlador {
         }
     }
 
+    /**
+     * Calcula el total de la factura para todo el mes y muestra el resultado en ventana.
+     * @param consumoPromedio Consumo promedio por hora
+     * @param mes Mes
+     * @param anio Año
+     * @param vista Vista para mostrar el mensaje
+     * @return Total de la factura
+     */
     public int calcularFactura(int consumoPromedio, int mes, int anio, view.FranjaVista vista) {
         int[] consumosPorHora = mGenerarConsumosHorarios(consumoPromedio);
         int diasDelMes = mObtenerDiasDelMes(mes, anio);
