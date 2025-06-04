@@ -30,8 +30,8 @@ public class MedidorControlador {
                 null,
                 "=== MENÚ MEDIDOR DE LUZ ===",
                 "Menú Medidor",
-                javax.swing.JOptionPane.DEFAULT_OPTION,
-                javax.swing.JOptionPane.INFORMATION_MESSAGE,
+                javax.swing.JOptionPane.DEFAULT_OPTION, // Opcion determinada 
+                javax.swing.JOptionPane.INFORMATION_MESSAGE, // Tipo de mensaje emergente
                 null,
                 opciones,
                 opciones[0]

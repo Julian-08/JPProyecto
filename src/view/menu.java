@@ -8,6 +8,16 @@ import controller.ClienteControlador;
 import controller.MedidorControlador;
 import controller.FranjasControlador;
 
+/**
+ * Clase que representa el menú principal de la aplicación.
+ * Permite navegar a diferentes secciones como Cliente, Registrador, Consumos e Imprimir Factura.
+ * @author Cesar Cardozo
+ * @author Julian Barreto
+ * @author Santiago Cabezas
+ */
+
+
+// Importaciones necesarias para la interfaz gráfica y el modelo de datos por herencia
 
 public class menu extends JFrame {
     private JButton btnCliente;
@@ -26,17 +36,17 @@ public class menu extends JFrame {
 
     public menu() {
         setTitle("Menú Principal");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 400);
-        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// Cierra la aplicación al cerrar la ventana
+        setSize(300, 400);// tamaño de la ventana
+        setLocationRelativeTo(null);// centra la ventana en la pantalla
 
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setBorder(BorderFactory.createEmptyBorder(30, 50, 30, 50));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));// ordena de manera vertical los botones
+        panel.setBorder(BorderFactory.createEmptyBorder(30, 50, 30, 50));// agrega un borde vacío alrededor del panel
 
         JLabel lblTitulo = new JLabel("MENÚ");
-        lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        lblTitulo.setFont(new Font("Arial", Font.BOLD, 22));
+        lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);// centra el título
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(lblTitulo);
         panel.add(Box.createRigidArea(new Dimension(0, 30)));
 
@@ -65,7 +75,7 @@ public class menu extends JFrame {
         panel.add(Box.createRigidArea(new Dimension(0, 15)));
 
         // Acciones de los botones
-        btnCliente.addActionListener(e -> abrirCliente());
+        btnCliente.addActionListener(e -> abrirCliente());// cuando se presiona el botón Cliente, se abre la ventana de Cliente
         btnRegistrador.addActionListener(e -> abrirRegistrador());
         btnConsumos.addActionListener(e -> abrirConsumos());
         btnImprimirRecibo.addActionListener(e -> imprimirReciboYSalir());
@@ -73,7 +83,7 @@ public class menu extends JFrame {
         add(panel);
     }
 
-    // Métodos para abrir las ventanas correspondientes
+    // Métodos para abrir las ventanas emergentes correspondientes a cada botón
     private void abrirCliente() {
         ClienteView vista = new ClienteView();
         ClienteControlador controlador = new ClienteControlador(modeloCliente, vista);
@@ -123,6 +133,8 @@ public class menu extends JFrame {
         } else {
             sb.append("No hay datos de cliente.\n");
         }
+            // sb.append sirve para agregar un texto a un StringBuilder
+            // Un strungBuilder es una clase que permite construir cadenas de texto de manera eficiente
 
         if (ultimoMedidor != null) {
             sb.append("\nMedidor:\n");

@@ -48,8 +48,10 @@ public class Cliente {
      * @param direccion Dirección
      * @param capacidadMaximaClientes Capacidad máxima de clientes
      */
+
+     // Este constructor inicializa un cliente con todos sus atributos y crea una matriz para almacenar clientes.
     public Cliente(String nombre, String numeroIdentificacion, String tipoDeIdentificacion, String correo,
-            String direccion, int capacidadMaximaClientes) {
+        String direccion, int capacidadMaximaClientes) {
         this.nombre = nombre;
         this.numeroIdentificacion = numeroIdentificacion;
         this.tipoDeIdentificacion = tipoDeIdentificacion;

@@ -62,7 +62,7 @@ public class FranjasControlador {
         int hora;
         try {
             if (horaStr.contains(":")) {
-                hora = Integer.parseInt(horaStr.split(":")[0]);
+                hora = Integer.parseInt(horaStr.split(":")[0]); // Extrae la hora antes de los dos puntos
             } else {
                 hora = Integer.parseInt(horaStr);
             }
@@ -132,6 +132,9 @@ public class FranjasControlador {
      * @param anio Año
      * @return Días del mes
      */
+
+
+     // calcula el número de días en un mes específico, considerando años bisiestos para febrero
     private int mObtenerDiasDelMes(int mes, int anio) {
         switch (mes) {
             case 2:

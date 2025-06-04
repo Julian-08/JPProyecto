@@ -55,6 +55,8 @@ public class MedidorVista {
      * Muestra la lista de medidores registrados.
      * @param datos Matriz con los datos de los medidores
      * @param cantidad Cantidad de medidores registrados
+     * @param StringBuilder sb StringBuilder para construir el mensaje concatenando varias lineas de texto
+     * 
      */
     public void mostrarMedidores(String[][] datos, int cantidad) {
         StringBuilder sb = new StringBuilder("--- LISTA DE MEDIDORES ---\n");
