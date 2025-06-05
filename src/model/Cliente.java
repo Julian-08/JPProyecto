@@ -55,7 +55,7 @@ public class Cliente {
         this.nombre = nombre;
         this.numeroIdentificacion = numeroIdentificacion;
         this.tipoDeIdentificacion = tipoDeIdentificacion;
-        this.correo = correo;
+        this.correo = correo; 
         this.direccion = direccion;
         this.capacidadMaximaClientes = capacidadMaximaClientes;
         this.matrizClientes = new Cliente[capacidadMaximaClientes];
